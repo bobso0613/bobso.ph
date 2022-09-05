@@ -1,0 +1,23 @@
+Options -Indexes
+RewriteEngine On
+DirectoryIndex index.php
+
+RewriteBase /bobso.ph
+
+ErrorDocument 500 /bobso.ph/base.php?page=404
+ErrorDocument 401 /bobso.ph/base.php?page=404
+ErrorDocument 402 /bobso.ph/base.php?page=404
+ErrorDocument 403 /bobso.ph/base.php?page=404
+ErrorDocument 404 /bobso.ph/base.php?page=404
+ErrorDocument 405 /bobso.ph/base.php?page=404
+
+#RewriteRule ^news_page/(.*)$ news_page.php?slug=$1 [QSA,L]
+
+RewriteCond %{REQUEST_URI} !(\.jpeg|\.jpg|\.gif|.png)$
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^([^\.]+)$ base.php?page=$1 [NC,QSA,L]
+#RewriteRule . bobso.ph/$1.php [L]
+
+
